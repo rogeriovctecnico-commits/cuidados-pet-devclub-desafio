@@ -1,0 +1,146 @@
+/* Base */
+:root{
+  --text: #0f172a;        /* Slate-900 */
+  --muted: #475569;       /* Slate-600 */
+  --primary: #16a34a;     /* Green-600 */
+  --border: #e2e8f0;      /* Slate-200 */
+  --bg: #ffffff;
+  --container: 1120px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.site-header {
+  border-bottom: 1px solid var(--border);
+}
+.nav {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 24px;
+}
+.nav__link, .nav__login {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 500;
+}
+.nav__link:hover, .nav__login:hover {
+  color: var(--text);
+}
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn--primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* Hero */
+.hero {
+  /* Ocupa o restante da altura da tela para permitir centralização vertical */
+  flex: 1;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 48px 24px;
+
+  /* Layout em 2 colunas no desktop */
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 48px;
+  align-items: center; /* Alinha verticalmente os itens no mesmo eixo da grid */
+}
+
+/* Área da imagem: centralização exata da imagem */
+.hero__art {
+  display: grid;
+  place-items: center; /* Centraliza horizontal e verticalmente */
+  min-height: 60vh;    /* Garante “meio da tela” visual mesmo com pouco texto */
+}
+
+/* A imagem em si */
+.image-center {
+  display: block;
+  max-width: 100%;
+  max-height: min(70vh, 640px); /* Evita que ultrapasse a tela */
+  width: auto;
+  height: auto;
+  object-fit: contain; /* Não distorce */
+}
+
+/* Conteúdo textual */
+.hero__title {
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.05;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+.hero__text {
+  font-size: clamp(16px, 2.2vw, 18px);
+  color: var(--muted);
+  margin: 0 0 24px 0;
+  max-width: 52ch;
+}
+.hero__link {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+.hero__link:hover {
+  text-decoration: underline;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px 16px;
+  }
+  .hero__content {
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .hero__text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .image-center {
+    max-height: 40vh; /* Ajuste para telas menores */
+    display: block;
+  }
+}
+.sidebar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
